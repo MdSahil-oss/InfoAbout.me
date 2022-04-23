@@ -1,0 +1,29 @@
+#head-container {
+    height: 100vh;
+}
+#text-container {
+    height: 100%;
+    padding-top: 13%;
+}
+#combined-images-container{
+    /* border:1px solid grey; */
+}
+#dev-logo {
+    /* border: 1px solid red; */
+    width: 120px;
+    height: 100px;
+    /* margin-left: 20px; */
+    /* padding-top: 20px; */
+    display: block;
+    justify-content: center;
+
+}
+#first-logo {
+    /* border: 1px solid gray; */
+}
+#second-logo{
+    /* border: 1px solid gray; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}

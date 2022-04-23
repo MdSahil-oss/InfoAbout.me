@@ -1,0 +1,11 @@
+#register-container {
+    width: 70%;
+    margin:auto;
+    height: 100vh;
+    padding-top: 50px;
+}
+
+#error-message {
+    border: 1px soldi rgb(255, 51, 51);
+    background-color: rgb(240, 222, 222);
+}

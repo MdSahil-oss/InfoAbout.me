@@ -1,0 +1,15 @@
+#navbar{
+    border: 1px solid grey;
+}
+
+#navbar a:hover{
+    background-color: rgb(199, 199, 199);
+}
+
+/* #navbar a:active{
+    background-color: grey;
+} */
+
+/* #navbar a:visited{
+    background-color: grey;
+} */
