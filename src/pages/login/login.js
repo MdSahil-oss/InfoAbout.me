@@ -4,8 +4,9 @@ import Register from '../register/register';
 import { FetchState } from '../../hooks';
 import api from '../../api/api';
 import { Alert } from '../../components/alert/alert';
+import { Server } from '../../utils/config';
 
-function Login({ dispatch }) {
+function Login({ dispatch,dispatchInfo }) {
     let [showError, setShowError] = useState();
     let [email, setEmail] = useState('')
     let [password, setPassword] = useState('')
@@ -14,12 +15,20 @@ function Login({ dispatch }) {
     let handleLogin = async (e) => {
         e.target.classList.add('loading')
         e.preventDefault();
-        setShowError()
+        setShowError();
         dispatch({ type: FetchState.FETCH_INIT });
         try {
             await api.createSession(email, password);
             const data = await api.getAccount();
             dispatch({ type: FetchState.FETCH_SUCCESS, payload: data });
+            dispatchInfo({ type: FetchState.FETCH_INIT });
+            try {
+                const userInfo = await api.listDocuments(Server.collectionID);
+                dispatchInfo({ type: FetchState.FETCH_SUCCESS, payload: userInfo["documents"][0] });
+                console.log(userInfo["documents"][0])
+            } catch (e) {
+                dispatchInfo({ type: FetchState.FETCH_FAILURE })
+            }
         } catch (e) {
             dispatch({ type: FetchState.FETCH_FAILURE });
             if (e.response.code == 401) {

@@ -1,0 +1,4 @@
+.edit-manager {
+    display: flex;
+    flex-direction: column;
+}

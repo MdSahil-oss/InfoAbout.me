@@ -40,4 +40,25 @@
 .container {
   margin:auto;
   width: 80%;
+  /* border: 1px solid gray; */
+}
+
+.container-spliter {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+
+}
+
+.input-text {
+  padding-left: 155px;
+  padding-bottom: 5px;
+}
+
+.pb-fit {
+  padding-bottom: 20px;
+}
+
+.mr-down {
+  margin-bottom: 0px;
 }

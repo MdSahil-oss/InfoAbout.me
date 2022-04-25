@@ -88,6 +88,7 @@ function Register({ setRegister,dispatch }) {
                 console.log(user)
                 api.createDocument(
                     Server.collectionID,
+                    user["$id"],
                     data,
                     [`user:${user["$id"]}`],
                     [`user:${user["$id"]}`]

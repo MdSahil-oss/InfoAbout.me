@@ -30,14 +30,14 @@ let api = {
     return api.provider().account.deleteSession('current');
   },
 
-  createDocument: (collectionId, data, read, write) => {
+  createDocument: (collectionId,doc_id ,data, read, write) => {
     return api
       .provider()
-      .database.createDocument(collectionId, 'unique()', data, read, write);
+      .database.createDocument(collectionId, doc_id, data, read, write);
   },
 
   listDocuments: (collectionId) => {
-    return api.provider().database.listDocuments(collectionId);
+    return api.provider().database.listDocuments(collectionId)
   },
 
   updateDocument: (collectionId, documentId, data, read, write) => {
@@ -48,6 +48,18 @@ let api = {
 
   deleteDocument: (collectionId, documentId) => {
     return api.provider().database.deleteDocument(collectionId, documentId);
+  },
+
+  updateName: (newName) => {
+    return api.provider().account.updateName(newName);
+  },
+
+  updateEmail: (newEmail,password) => {
+    return api.provider().account.updateEmail(newEmail, password);
+  },
+
+  updatePassword: (newPassword,oldPassword) => {
+    return api.provider().account.account.updatePassword(newPassword,oldPassword);
   },
 };
 

@@ -86,15 +86,6 @@ function Landing(props) {
                                         <a href="#" class="item"><i class="twitter icon"></i>Twitter</a>
                                         <a href="#" class="item"><i class="linkedin icon"></i>Linkedin</a>                                    </div>
                                 </div>
-                                {/* <div class="three wide column">
-                                    <h4 class="ui inverted header">Services</h4>
-                                    <div class="ui inverted link list">
-                                        <a href="#" class="item">Banana Pre-Order</a>
-                                        <a href="#" class="item">DNA FAQ</a>
-                                        <a href="#" class="item">How To Access</a>
-                                        <a href="#" class="item">Favorite X-Men</a>
-                                    </div>
-                                </div> */}
                                 <div class="seven wide column">
                                     <h4 class="ui inverted header">All Copyrights reserved</h4>
                                     <p>This website is just built for learning and development purposes not for deployment purpose.</p>

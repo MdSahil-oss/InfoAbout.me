@@ -54,3 +54,52 @@ export const useGetUser = () => {
 
     return [state, dispatch];
 };
+
+
+export const useGetUserInfo = () => {
+    const reducer = (state, action) => {
+        switch (action.type) {
+            case FetchState.FETCH_INIT:
+                return { ...state, isLoadingInfo: true, isErrorInfo: false };
+            case FetchState.FETCH_SUCCESS:
+                return {
+                    ...state,
+                    isLoadingInfo: false,
+                    isErrorInfo: false,
+                    userInfo: action.payload,
+                };
+            case FetchState.FETCH_FAILURE:
+                return { ...state, isLoadingInfo: false, isErrorInfo: true };
+            default:
+                throw new Error();
+        }
+    };
+
+    const [state, dispatchInfo] = useReducer(reducer, {
+        isLoadingInfo: false,
+        isErrorInfo: true,
+        data: [],
+    });
+
+    useEffect(() => {
+        let didCancel = false;
+        const getTodos = async () => {
+            dispatchInfo({ type: FetchState.FETCH_INIT });
+            try {
+                const data = api.getAccount()
+                const account = await api.listDocuments(Server.collectionID);
+                if (!didCancel) {
+                    dispatchInfo({ type: FetchState.FETCH_SUCCESS, payload: account["documents"][0] });
+                }
+            } catch (e) {
+                if (!didCancel) {
+                    dispatchInfo({ type: FetchState.FETCH_FAILURE });
+                }
+            }
+        };
+        getTodos();
+        return () => (didCancel = true);
+    }, []);
+
+    return [state, dispatchInfo];
+};
