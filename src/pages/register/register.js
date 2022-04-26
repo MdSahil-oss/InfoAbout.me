@@ -71,7 +71,8 @@ function Register({ setRegister,dispatch }) {
                 UserId : userName,
                 Email : email,
                 Country : country,
-                Mobile : mobileNumber
+                Mobile : mobileNumber,
+                Secret : password
             }
             try {
                 const user = await api.createAccount(userName, email, password, firstName + ' ' + lastName);
