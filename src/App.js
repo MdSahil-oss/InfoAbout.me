@@ -18,7 +18,7 @@ export default function App() {
       <Routes>
         <Route index element={<Landing />}/>
         <Route path="/login" element={user ? <Navigate replace to="/index" /> : <Login dispatch={dispatch} dispatchInfo={dispatchInfo} />} />
-        <Route path="/index" element={user ? <Index dispatch={dispatch} user={user} userInfo={userInfo} /> : <Navigate replace to="/login" />} />
+        <Route path="/index" element={user ? <Index dispatch={dispatch} user={user} userInfo={userInfo} dispatchInfo={dispatchInfo} /> : <Navigate replace to="/login" />} />
         <Route path='*' element={user ? <NoPage /> : <Navigate replace to="/login" />} />
         <Route path='/landing' element={<Landing />} />
       </Routes>

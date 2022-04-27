@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import countries from '../register/countries'
 import UserInfoModal from "./user-info-modal";
-function UserInfo({ user, userInfo }) {
+function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
     // console.log(userInfo)
+
+    let modal = document.getElementById('modal');
+    let [enteredCountryCode, setEnteredCountryCode] = useState();
     let countryInput = document.getElementById('country-input-user-info')
     let mobileInput = document.getElementById('mobile-input-user-info')
     let nameInput = document.getElementById('name-input-user-info')
@@ -19,14 +22,24 @@ function UserInfo({ user, userInfo }) {
     let [correctName, setCorrectName] = useState(true)
     let [correctMobile, setCorrectMobile] = useState(true)
 
+    let [edit, setEdit] = useState(false)
     let [modalCredentialName, setModalCredentialName] = useState()
 
     let manageModal = () => {
-        let modal = document.getElementById('modal');
-        document.body.classList.add("dimmed")
-        modal.classList.add('visible')
-        modal.classList.add('active')
+        if (edit) {
+            document.body.classList.add("dimmed")
+            modal.classList.add('visible')
+            modal.classList.add('active')
+        } else {
+            document.body.classList.remove('dimmed')
+            modal.classList.remove('active')
+            modal.classList.remove('visible')
+        }
     }
+
+    useEffect(()=>{
+        manageModal()
+    },[edit])
 
     let updateName = () => {
         setModalCredentialName("Name")
@@ -82,6 +95,15 @@ function UserInfo({ user, userInfo }) {
         })
     }
 
+    let countryToCode = (enteredCountry) => {
+        countries.forEach((country) => {
+            if (enteredCountry.toLowerCase() === country.name.toLowerCase()) {
+                // setCountry(country.code)
+                setEnteredCountryCode(country.code);
+            }
+        })
+    }
+
     useEffect(() => {
         setMobile(userInfo["Mobile"])
         setCountry(userInfo["Country"])
@@ -107,7 +129,7 @@ function UserInfo({ user, userInfo }) {
                             </div>
                         </div>
                         <button class="ui inverted big blue button"
-                            onClick={updateName}
+                            onClick={()=>{setEdit(true);updateName()}}
                             disabled={!editName || !correctName}
                         >Confirm</button>
                     </div>
@@ -123,12 +145,12 @@ function UserInfo({ user, userInfo }) {
                                     setMobile(e.target.value)
                                     handleMobile(e.target.value)
                                 }} disabled={!editMobile} type="text" placeholder="Search..." />
-                                <i onClick={() => { setEditMobile(true) }} class="edit link icon"></i>
+                                <i onClick={() => {setEditMobile(true) }} class="edit link icon"></i>
                             </div>
                         </div>
                         <button class="ui inverted big blue button"
                             disabled={!editMobile || !correctMobile}
-                            onClick={updateMobile}
+                            onClick={()=>{setEdit(true);updateMobile()}}
                         >Confirm</button>
                     </div>
                 </div>
@@ -150,11 +172,17 @@ function UserInfo({ user, userInfo }) {
                         </div>
                         <button class="ui inverted big blue button"
                             disabled={!editCountry || !correctCountry}
-                            onClick={updateCountry}
+                            onClick={() => {setEdit(true); countryToCode(country); updateCountry() }}
                         >Confirm</button>
                     </div>
                 </div>
-                <UserInfoModal  credentialName={modalCredentialName} name={name} mobile={mobile} country={country} />
+                <UserInfoModal credentialName={modalCredentialName}
+                    newName={name} newMobile={mobile} newCountry={enteredCountryCode}
+                    userInfo={userInfo}
+                    dispatch={dispatch}
+                    dispatchInfo={dispatchInfo}
+                    setEdit={setEdit}
+                />
             </div>
         </>
     )

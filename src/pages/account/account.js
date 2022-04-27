@@ -1,7 +1,7 @@
 import Credential from "./credential";
 import UserInfo from "./user-info";
 
-function Account({ user, userInfo }) {
+function Account({ user, userInfo, dispatch, dispatchInfo }) {
     // console.log(userInfo)
     
     return (
@@ -16,8 +16,8 @@ function Account({ user, userInfo }) {
                     </div>
                     <div class="sub header">Manage your account settings and set your data as per your preference.</div>
                 </h2> */}
-                <Credential user={user} />
-                <UserInfo user={user} userInfo={userInfo} />
+                {/* <Credential user={user} /> */}
+                <UserInfo user={user} userInfo={userInfo} dispatchInfo={dispatchInfo} dispatch={dispatch} />
                 <p className="pb-fit"><b>To edit</b> any credential click on the edit icon of the credential then
                     enter new value to set.
                 </p>

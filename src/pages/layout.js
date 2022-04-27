@@ -7,7 +7,7 @@ import LinkedIn from "./linkedin/linkedin"
 import Twitter from "./twitter/twitter"
 import Dev from "./dev/dev"
 
-const Layout = ({account,linkedin,github,twitter,dev,user,userInfo }) => {
+const Layout = ({account,linkedin,github,twitter,dev,user,userInfo,dispatch,dispatchInfo}) => {
   if (github) {
     return (
       <>
@@ -38,7 +38,7 @@ const Layout = ({account,linkedin,github,twitter,dev,user,userInfo }) => {
   }
   return (
     <>
-      <Account user={user} userInfo={userInfo}/>
+      <Account user={user} userInfo={userInfo} dispatchInfo={dispatchInfo} dispatch={dispatch}/>
     </>
   )
   

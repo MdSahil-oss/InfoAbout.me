@@ -87,13 +87,17 @@ function Register({ setRegister,dispatch }) {
                 setCountry('');
                 setMobileNumber('');
                 console.log(user)
-                api.createDocument(
-                    Server.collectionID,
-                    user["$id"],
-                    data,
-                    [`user:${user["$id"]}`],
-                    [`user:${user["$id"]}`]
-                    )
+                try {
+                    api.createDocument(
+                        Server.collectionID,
+                        user["$id"],
+                        data,
+                        [`user:${user["$id"]}`],
+                        [`user:${user["$id"]}`]
+                        )
+                } catch {
+                    console.log('Could not be created document')
+                }
                 console.log('Done! document creation')
             } catch (e) {
                 dispatch({ type: FetchState.FETCH_FAILURE });

@@ -25,14 +25,14 @@ function Login({ dispatch,dispatchInfo }) {
             try {
                 const userInfo = await api.listDocuments(Server.collectionID);
                 dispatchInfo({ type: FetchState.FETCH_SUCCESS, payload: userInfo["documents"][0] });
-                console.log(userInfo["documents"][0])
+                // console.log(userInfo["documents"][0])
             } catch (e) {
                 dispatchInfo({ type: FetchState.FETCH_FAILURE })
             }
         } catch (e) {
             dispatch({ type: FetchState.FETCH_FAILURE });
             if (e.response.code == 401) {
-                console.log("Here")
+                // console.log("Here")
                 setShowError(<Alert
                     errorHeader='Invalid Credential'
                     errorMessage='Error in Email or Password'

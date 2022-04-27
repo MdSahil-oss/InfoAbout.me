@@ -4,7 +4,7 @@ import Layout from "./layout"
 import Footer from "../components/footer/footer"
 
 
-export default function Index({dispatch,user,userInfo}) {
+export default function Index({dispatch,user,userInfo,dispatchInfo}) {
     let [account,setAccount] = useState(false)
     let [github,setGithub] = useState(false)
     let [linkedin,setLinkedin] = useState(false)
@@ -31,6 +31,8 @@ export default function Index({dispatch,user,userInfo}) {
         dev={dev}
         user={user}
         userInfo={userInfo}
+        dispatch={dispatch}
+        dispatchInfo={dispatchInfo}
         />
         
         <Footer />

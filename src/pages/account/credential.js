@@ -1,5 +1,29 @@
+import Modal from "../../components/modal/modal";
+import { useState,useEffect } from "react";
 
 function Credential({user}) {
+    let [edit,setEdit] = useState(false)
+    let modal = document.getElementById('modal');
+    let manageModal = () => {
+        if (edit) {
+            document.body.classList.add("dimmed")
+            modal.classList.add('visible')
+            modal.classList.add('active')
+        }
+        else {
+            document.body.classList.remove('dimmed')
+            modal.classList.remove('active')
+            modal.classList.remove('visible')
+        }
+    }
+    useEffect(()=>{
+        manageModal()
+    },[edit]);
+
+    let updateCredential = () => {
+        console.log("Updating Creadential");
+    }
+
     return (
         <>
             <div className="ui placeholder segment">
@@ -31,7 +55,7 @@ function Credential({user}) {
                         </div>
                     </div>
                     <div className="middle aligned column">
-                        <div className="ui big inverted primary button">
+                        <div onClick={(e)=>{setEdit(true)}} className="ui big inverted primary button">
                             <i className="edit icon"></i>
                             Edit
                         </div>
@@ -40,6 +64,8 @@ function Credential({user}) {
                 <div className="ui vertical divider">
                     Or
                 </div>
+                <Modal credentialName="Credentials" Description="Description"
+                updateData={updateCredential} setEdit={setEdit}/>
             </div>
             
         </>
