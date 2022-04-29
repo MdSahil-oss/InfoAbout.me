@@ -2,3 +2,6 @@
     display: flex;
     flex-direction: column;
 }
+#credential-modal-buttons{
+    border:2px solid black
+}

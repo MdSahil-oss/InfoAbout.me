@@ -1,28 +1,31 @@
 import './modal.css'
 import api from '../../api/api'
 
+// credentialName,userInfo,secretMatched,setSecretMatched
 
-function Modal({ credentialName,updateData,Description,setEdit}) {
+function Modal({ credentialName, handleSubmit, Description, setEdit,
+    userInfo, secretMatched, setSecretMatched }) {
         
     return (
         <>
-            <div id="modal" class="ui tiny modal test scrolling transition">
-                <i class="close icon" onClick={()=>{setEdit(false)}}></i>
-                <div class="header">
+            <div id="modal" className="ui tiny modal test scrolling transition">
+                <i className="close icon" onClick={() => { setEdit(false) }}></i>
+                <div className="header">
                     {"Changing " + credentialName}
                 </div>
-                <div class="content">
-                    <div class="description">
-                        <Description credentialName={credentialName} />
+                <div className="content">
+                    <div className="description">
+                        <Description credentialName={credentialName} userInfo={userInfo}
+                            secretMatched={secretMatched} setSecretMatched={setSecretMatched} />
                     </div>
                 </div>
-                <div class="actions">
-                    <div onClick={()=>{setEdit(false)}} class="ui black deny button">
+                <div className="actions">
+                    <div onClick={() => { setEdit(false) }} className="ui black deny button">
                         Cancel
                     </div>
-                    <div onClick={updateData} class="ui blue right labeled icon button">
+                    <div onClick={handleSubmit} className="ui blue right labeled icon button">
                         Confirm
-                        <i class="checkmark icon"></i>
+                        <i className="checkmark icon"></i>
                     </div>
                 </div>
             </div>

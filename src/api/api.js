@@ -59,7 +59,7 @@ let api = {
   },
 
   updatePassword: (newPassword,oldPassword) => {
-    return api.provider().account.account.updatePassword(newPassword,oldPassword);
+    return api.provider().account.updatePassword(newPassword,oldPassword);
   },
 };
 

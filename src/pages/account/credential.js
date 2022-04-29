@@ -1,11 +1,12 @@
 import Modal from "../../components/modal/modal";
 import { useState,useEffect } from "react";
+import CreadentialModal from './creadential-modal'
 
-function Credential({user}) {
-    let [edit,setEdit] = useState(false)
-    let modal = document.getElementById('modal');
+function Credential({user,userInfo,dispatch,dispatchInfo}) {
+    let [mainEdit,setMainEdit] = useState(false)
     let manageModal = () => {
-        if (edit) {
+        let modal = document.getElementById('creadentialModal');
+        if (mainEdit) {
             document.body.classList.add("dimmed")
             modal.classList.add('visible')
             modal.classList.add('active')
@@ -18,7 +19,7 @@ function Credential({user}) {
     }
     useEffect(()=>{
         manageModal()
-    },[edit]);
+    },[mainEdit]);
 
     let updateCredential = () => {
         console.log("Updating Creadential");
@@ -55,7 +56,7 @@ function Credential({user}) {
                         </div>
                     </div>
                     <div className="middle aligned column">
-                        <div onClick={(e)=>{setEdit(true)}} className="ui big inverted primary button">
+                        <div onClick={()=>{setMainEdit(true)}} className="ui big inverted primary button">
                             <i className="edit icon"></i>
                             Edit
                         </div>
@@ -64,8 +65,9 @@ function Credential({user}) {
                 <div className="ui vertical divider">
                     Or
                 </div>
-                <Modal credentialName="Credentials" Description="Description"
-                updateData={updateCredential} setEdit={setEdit}/>
+                <CreadentialModal user={user} userInfo={userInfo}
+                 dispatch={dispatch} dispatchInfo={dispatchInfo} 
+                 setMainEdit={setMainEdit} />
             </div>
             
         </>

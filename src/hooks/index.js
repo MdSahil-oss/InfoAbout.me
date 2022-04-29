@@ -60,7 +60,8 @@ export const useGetUserInfo = () => {
     const reducer = (state, action) => {
         switch (action.type) {
             case FetchState.FETCH_INIT:
-                return { ...state, isLoadingInfo: true, isErrorInfo: false };
+                return { ...state, isLoadingInfo: true, isErrorInfo: false,
+                    userInfo: {"Name":"Na","Mobile":"Na","Country":"Na"}};
             case FetchState.FETCH_SUCCESS:
                 return {
                     ...state,

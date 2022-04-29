@@ -4,11 +4,11 @@ import UserInfoModal from "./user-info-modal";
 function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
     // console.log(userInfo)
 
-    let modal = document.getElementById('modal');
     let [enteredCountryCode, setEnteredCountryCode] = useState();
-    let countryInput = document.getElementById('country-input-user-info')
-    let mobileInput = document.getElementById('mobile-input-user-info')
-    let nameInput = document.getElementById('name-input-user-info')
+
+    let [countryInput,setCountryInput] = useState()
+    let [mobileInput,setMobileInput] = useState()
+    let [nameInput,setNameInput] = useState()
 
     let [editName, setEditName] = useState(false)
     let [editMobile, setEditMobile] = useState(false)
@@ -26,21 +26,20 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
     let [modalCredentialName, setModalCredentialName] = useState()
 
     let manageModal = () => {
+        let modal = document.getElementById('modal');
+        // console.log(modal)
         if (edit) {
-            document.body.classList.add("dimmed")
+            // document.body.classList.add("dimmed")
             modal.classList.add('visible')
             modal.classList.add('active')
         } else {
-            document.body.classList.remove('dimmed')
+            // document.body.classList.remove('dimmed')
             modal.classList.remove('active')
             modal.classList.remove('visible')
         }
     }
 
-    useEffect(()=>{
-        manageModal()
-    },[edit])
-
+    
     let updateName = () => {
         setModalCredentialName("Name")
         manageModal()
@@ -50,43 +49,43 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
         setModalCredentialName("Mobile Number")
         manageModal()
     }
-
+    
     let updateCountry = () => {
         setModalCredentialName("Country")
         manageModal()
     }
-
+    
     let handleCountry = (country = country) => {
         let checkCountry = false;
-
+        
         countries.forEach((element) => {
             element["name"].toLowerCase() === country.toLowerCase() && (checkCountry = true)
         })
-
+        
         checkCountry ? (countryInput.classList.contains('error') && countryInput.classList.remove('error'))
-            : countryInput.classList.add('error');
-
+        : countryInput.classList.add('error');
+        
         setCorrectCountry(checkCountry)
     }
-
+    
     let handleMobile = (mobile) => {
         let checkMobile = /^([0|+[0-9]{1,5})?([7-9][0-9]{9})$/
-
+        
         checkMobile.test(mobile) ? (mobileInput.classList.contains('error') && mobileInput.classList.remove('error'))
-            : mobileInput.classList.add('error');
-
+        : mobileInput.classList.add('error');
+        
         setCorrectMobile(checkMobile.test(mobile))
     }
-
+    
     let handleName = (name) => {
         let checkName = /[a-zA-Z]{2,20}/
-
+        
         checkName.test(name) ? (nameInput.classList.contains('error') && nameInput.classList.remove('error'))
-            : nameInput.classList.add('error')
-
+        : nameInput.classList.add('error')
+        
         setCorrectName(checkName.test(name))
     }
-
+    
     let codeToCountry = (code = userInfo["Country"]) => {
         countries.forEach((country) => {
             if (country.code === code) {
@@ -98,18 +97,26 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
     let countryToCode = (enteredCountry) => {
         countries.forEach((country) => {
             if (enteredCountry.toLowerCase() === country.name.toLowerCase()) {
-                // setCountry(country.code)
                 setEnteredCountryCode(country.code);
             }
         })
     }
+    
+    useEffect(() => {
+        manageModal()
+    }, [edit])
 
     useEffect(() => {
         setMobile(userInfo["Mobile"])
         setCountry(userInfo["Country"])
         codeToCountry()
-    }, [])
+    }, [userInfo])
 
+    useEffect(()=>{
+        setCountryInput(document.getElementById('country-input-user-info'))
+        setMobileInput(document.getElementById('mobile-input-user-info'))
+        setNameInput(document.getElementById('name-input-user-info'))
+    },[])
 
     return (
         <>
@@ -129,7 +136,7 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
                             </div>
                         </div>
                         <button class="ui inverted big blue button"
-                            onClick={()=>{setEdit(true);updateName()}}
+                            onClick={() => { setEdit(true); updateName() }}
                             disabled={!editName || !correctName}
                         >Confirm</button>
                     </div>
@@ -145,12 +152,12 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
                                     setMobile(e.target.value)
                                     handleMobile(e.target.value)
                                 }} disabled={!editMobile} type="text" placeholder="Search..." />
-                                <i onClick={() => {setEditMobile(true) }} class="edit link icon"></i>
+                                <i onClick={() => { setEditMobile(true) }} class="edit link icon"></i>
                             </div>
                         </div>
                         <button class="ui inverted big blue button"
                             disabled={!editMobile || !correctMobile}
-                            onClick={()=>{setEdit(true);updateMobile()}}
+                            onClick={() => { setEdit(true); updateMobile() }}
                         >Confirm</button>
                     </div>
                 </div>
@@ -172,7 +179,7 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
                         </div>
                         <button class="ui inverted big blue button"
                             disabled={!editCountry || !correctCountry}
-                            onClick={() => {setEdit(true); countryToCode(country); updateCountry() }}
+                            onClick={() => { setEdit(true); countryToCode(country); updateCountry() }}
                         >Confirm</button>
                     </div>
                 </div>
