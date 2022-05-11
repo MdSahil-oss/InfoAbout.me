@@ -2,27 +2,12 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "../components/navbar/navbar";
 import Account from "./account/account"
-import Github from "./github/github"
-import LinkedIn from "./linkedin/linkedin"
-import Twitter from "./twitter/twitter"
+import Twitter from "./twitter/twitter-page"
 import Dev from "./dev/dev"
 
 const Layout = ({account,linkedin,github,twitter,dev,user,userInfo,dispatch,dispatchInfo}) => {
-  if (github) {
-    return (
-      <>
-        <Github />
-      </>
-    )
-  }
-  else if (linkedin) {
-    return (
-      <>
-        <LinkedIn />
-      </>
-    )
-  }
-  else if (twitter) {
+  
+  if (twitter) {
     return (
       <>
         <Twitter />
@@ -32,7 +17,7 @@ const Layout = ({account,linkedin,github,twitter,dev,user,userInfo,dispatch,disp
   else if (dev) {
     return (
       <>
-        <Dev />
+        <Dev user={user}/>
       </>
     )
   }

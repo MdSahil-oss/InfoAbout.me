@@ -8,11 +8,11 @@ export const FetchState = {
     FETCH_FAILURE: 2,
 };
 
-export const useGetUser = () => {
+export default function useGetUser() {
     const reducer = (state, action) => {
         switch (action.type) {
             case FetchState.FETCH_INIT:
-                return { ...state, isLoading: true, isError: false };
+                return { ...state, isLoading: true, isError: false};
             case FetchState.FETCH_SUCCESS:
                 return {
                     ...state,

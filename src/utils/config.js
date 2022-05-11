@@ -1,5 +1,17 @@
+// import Client from "twitter-api-sdk";
+// import keys from '../../../express-server/config/keys'
 export const Server = {
-    endpoint : 'http://localhost:5000/v1',
-    project: '625c04e7a80a74cfd4f5',
-    collectionID : '6262871220f468f37d8c'
+    endpoint : 'http://localhost:5000/v1',     // Change it as per your need
+    APIsEndpoint : 'http://localhost:4000',   // Change it as per your need
+    project: '',
+    collectionID : '',
+    usersLogins : '',
+    APIKey : '',
+    APISecret : '',
+    BearerToken : '',
+    ClientId : '',
+    ClientSecret : '',
+    devCredential : ''
 }
+
+// export default Server

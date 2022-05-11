@@ -4,11 +4,11 @@ import api from '../../api/api'
 // credentialName,userInfo,secretMatched,setSecretMatched
 
 function Modal({ credentialName, handleSubmit, Description, setEdit,
-    userInfo, secretMatched, setSecretMatched }) {
+    userInfo, secretMatched, setSecretMatched, modalId }) {
         
     return (
         <>
-            <div id="modal" className="ui tiny modal test scrolling transition">
+            <div id={modalId} className="ui tiny modal test scrolling transition">
                 <i className="close icon" onClick={() => { setEdit(false) }}></i>
                 <div className="header">
                     {"Changing " + credentialName}

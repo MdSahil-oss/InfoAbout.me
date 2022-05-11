@@ -26,7 +26,7 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
     let [modalCredentialName, setModalCredentialName] = useState()
 
     let manageModal = () => {
-        let modal = document.getElementById('modal');
+        let modal = document.getElementById('user-modal');
         // console.log(modal)
         if (edit) {
             // document.body.classList.add("dimmed")
@@ -127,15 +127,15 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
                     </div>
                     <div className="container container-spliter" >
                         <div className="field">
-                            <div id="name-input-user-info" class="ui big icon input">
+                            <div id="name-input-user-info" className="ui big icon input">
                                 <input onChange={(e) => {
                                     setName(e.target.value)
                                     handleName(e.target.value)
                                 }} value={name} disabled={!editName} type="text" />
-                                <i onClick={() => { setEditName(true) }} class="edit link icon"></i>
+                                <i onClick={() => { setEditName(true) }} className="edit link icon"></i>
                             </div>
                         </div>
-                        <button class="ui inverted big blue button"
+                        <button className="ui inverted big blue button"
                             onClick={() => { setEdit(true); updateName() }}
                             disabled={!editName || !correctName}
                         >Confirm</button>
@@ -147,15 +147,15 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
                     </div>
                     <div className="container container-spliter" >
                         <div className="field">
-                            <div id="mobile-input-user-info" class="ui big icon input">
+                            <div id="mobile-input-user-info" className="ui big icon input">
                                 <input value={mobile} onChange={(e) => {
                                     setMobile(e.target.value)
                                     handleMobile(e.target.value)
                                 }} disabled={!editMobile} type="text" placeholder="Search..." />
-                                <i onClick={() => { setEditMobile(true) }} class="edit link icon"></i>
+                                <i onClick={() => { setEditMobile(true) }} className="edit link icon"></i>
                             </div>
                         </div>
-                        <button class="ui inverted big blue button"
+                        <button className="ui inverted big blue button"
                             disabled={!editMobile || !correctMobile}
                             onClick={() => { setEdit(true); updateMobile() }}
                         >Confirm</button>
@@ -167,17 +167,17 @@ function UserInfo({ user, userInfo, dispatch, dispatchInfo }) {
                     </div>
                     <div className="container container-spliter" >
                         <div className="field">
-                            <div id="country-input-user-info" class="ui big icon input">
+                            <div id="country-input-user-info" className="ui big icon input">
                                 <input value={country}
                                     onChange={(e) => {
                                         setCountry(e.target.value)
                                         handleCountry(e.target.value)
                                     }}
                                     disabled={!editCountry} type="text" placeholder="Search..." />
-                                <i onClick={() => { setEditCountry(true) }} class="edit link icon"></i>
+                                <i onClick={() => { setEditCountry(true) }} className="edit link icon"></i>
                             </div>
                         </div>
-                        <button class="ui inverted big blue button"
+                        <button className="ui inverted big blue button"
                             disabled={!editCountry || !correctCountry}
                             onClick={() => { setEdit(true); countryToCode(country); updateCountry() }}
                         >Confirm</button>

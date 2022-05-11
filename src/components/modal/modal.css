@@ -1,4 +1,8 @@
-#modal {
+#credential-modal {
+    margin-top: -30%;
+    margin-left: 15%;
+}
+#user-modal {
     margin-top: -30%;
     margin-left: 15%;
 }

@@ -2,22 +2,33 @@ import './navbar.css'
 import api from "../../api/api";
 import { FetchState } from "../../hooks";
 import { Server } from "../../utils/config";
+import { useEffect } from 'react';
 
-function Navbar({dispatch,setAccount,setGithub,setTwitter,setLinkedin,setDev}) {
+function Navbar({dispatch,setAccount,setGithub,setTwitter,setLinkedin,setDev,page}) {
 
+    let items;
+    
+    useEffect(()=>{
+        items = Array.from(document.getElementsByClassName('item'))
+
+
+        setAccount(false)
+        setTwitter(false)
+        setDev(false)
+
+        page.toLowerCase() === 'twitter' && setTwitter(true)
+        page.toLowerCase() === 'dev' && setDev(true)
+        page.toLowerCase() === 'none' && setAccount(true)
+    },[])
     
     let handleLayout = (e) => {
-        let items = Array.from(document.getElementsByClassName('item'))
+        // items = Array.from(document.getElementsByClassName('item'))
         setAccount(false)
-        setGithub(false)
-        setLinkedin(false)
         setTwitter(false)
         setDev(false)
 
         e.target.text.toLowerCase() === 'account' && setAccount(true);
-        e.target.text.toLowerCase() === 'github' && setGithub(true);
         e.target.text.toLowerCase() === 'twitter' && setTwitter(true);
-        e.target.text.toLowerCase() === 'linkedin' && setLinkedin(true);
         e.target.text.toLowerCase() === 'dev.to' && setDev(true);
 
         items.forEach((element) => {
@@ -39,24 +50,18 @@ function Navbar({dispatch,setAccount,setGithub,setTwitter,setLinkedin,setDev}) {
     }
 
     return (
-        <div id="navbar" className="ui secondary  menu">
+        <div id="navbar" className="ui inverted secondary menu">
             <h3 className="item">
                 <span>Info</span><span>About.me</span>
             </h3>
-            <a onClick={handleLayout} className="item" >
-                Account
-            </a>
-            <a onClick={handleLayout} className="item" >
-                GitHub
-            </a>
-            <a className="item" onClick={handleLayout}>
-                Dev.to
-            </a>
             <a className="item" onClick={handleLayout}>
                 Twitter
             </a>
             <a className="item" onClick={handleLayout}>
-                LinkedIn
+                Dev.to
+            </a>
+            <a onClick={handleLayout} className="item" >
+                Account
             </a>
             <div className="right menu">
                 <a onClick={handleLogout} className="ui item" >

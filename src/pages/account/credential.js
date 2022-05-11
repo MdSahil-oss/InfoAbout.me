@@ -21,9 +21,6 @@ function Credential({user,userInfo,dispatch,dispatchInfo}) {
         manageModal()
     },[mainEdit]);
 
-    let updateCredential = () => {
-        console.log("Updating Creadential");
-    }
 
     return (
         <>

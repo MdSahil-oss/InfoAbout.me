@@ -7,7 +7,7 @@ import { FetchState, useGetUser } from "../../hooks";
 import { Alert } from '../../components/alert/alert';
 import { Server } from '../../utils/config';
 
-function Register({ setRegister,dispatch }) {
+function Register({ setRegister, dispatch }) {
     let [showError, setShowError] = useState();
     let [firstName, setFirstName] = useState('')
     let [lastName, setLastName] = useState('')
@@ -67,12 +67,12 @@ function Register({ setRegister,dispatch }) {
         else {
             dispatch({ type: FetchState.FETCH_INIT });
             let data = {
-                Name : firstName + ' ' + lastName,
-                UserId : userName,
-                Email : email,
-                Country : country,
-                Mobile : mobileNumber,
-                Secret : password
+                Name: firstName + ' ' + lastName,
+                UserId: userName,
+                Email: email,
+                Country: country,
+                Mobile: mobileNumber,
+                Secret: password
             }
             try {
                 const user = await api.createAccount(userName, email, password, firstName + ' ' + lastName);
@@ -94,7 +94,7 @@ function Register({ setRegister,dispatch }) {
                         data,
                         [`user:${user["$id"]}`],
                         [`user:${user["$id"]}`]
-                        )
+                    )
                 } catch {
                     console.log('Could not be created document')
                 }
@@ -106,7 +106,6 @@ function Register({ setRegister,dispatch }) {
                     errorHeader='User Already Exist'
                     errorMessage='You cannot sign-up because user already exist.'
                 />)
-                
             }
         }
         e.target.classList.remove('loading')

@@ -23,13 +23,15 @@ let UserInfoModal = ({ credentialName, newName, newMobile,
 
     return (
         <>
-            <Modal credentialName={credentialName}
+            <Modal 
+            credentialName={credentialName}
             setEdit={setEdit}
             Description={UserInfoPasswordInput}
             handleSubmit={runHandleSubmit}
             userInfo={userInfo}
             secretMatched={secretMatched}
             setSecretMatched={setSecretMatched}
+            modalId="user-modal"
             />
         </>
     )

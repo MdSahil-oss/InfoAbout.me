@@ -9,7 +9,7 @@ import { handleSubmit } from './common-functions'
 let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) => {
 
     let modalPassword = document.getElementById('modalPassword')
-    let [secret, setSecret] = useState(userInfo["Secret"])
+    let [secret, setSecret] = useState()
     let [email, setEmail] = useState(user["email"]);
     let [userId, setUserId] = useState(user["$id"]);
     let [password, setPassword] = useState();
@@ -19,18 +19,18 @@ let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) 
     let [editPassword, setEditPassword] = useState(false)
     let [edit, setEdit] = useState(false)
     let [credentialName, setCredentialName] = useState();
-
+    
     let CredentailsInput = () => {
 
         let manageModal = () => {
-            let modal = document.getElementById('modal');
+            let modal = document.getElementById('credential-modal');
             if (edit) {
-                document.body.classList.add("dimmed")
+                // document.body.classList.add("dimmed")
                 modal.classList.add('visible')
                 modal.classList.add('active')
             }
             else {
-                document.body.classList.remove('dimmed')
+                // document.body.classList.remove('dimmed')
                 modal.classList.remove('active')
                 modal.classList.remove('visible')
             }
@@ -38,6 +38,7 @@ let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) 
 
         useEffect(() => {
             manageModal()
+            // setSecret(userInfo["Secret"])
         }, [edit]);
 
         let manageModalPassword = () => {
@@ -46,6 +47,7 @@ let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) 
         }
 
         let verifyPassword = () => {
+            setSecret(userInfo["Secret"])
             secret === enteredOldPassword ? setSecretMatched(true) : setSecretMatched(false);
             manageModalPassword()
             console.log(secretMatched)
@@ -60,12 +62,12 @@ let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) 
                         </div>
                         <div className="container container-spliter" >
                             <div className="field">
-                                <div id="" class="ui big icon input">
+                                <div id="" className="ui big icon input">
                                     <input value={userId} disabled={true} type="text" />
-                                    <i onClick={() => { }} class="link icon"></i>
+                                    <i onClick={() => { }} className="link icon"></i>
                                 </div>
                             </div>
-                            <button class="ui inverted big blue button"
+                            <button className="ui inverted big blue button"
                                 onClick={() => { }}
                                 disabled={true}
                             >Confirm</button>
@@ -77,12 +79,13 @@ let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) 
                         </div>
                         <div className="container container-spliter" >
                             <div className="field">
-                                <div id="" class="ui big icon input">
-                                    <input value={email} onChange={(e) => { setEmail(e.target.value) }} disabled={!editEmail} type="email" />
+                                <div id="" className="ui big icon input">
+                                    {console.log('Run')}
+                                    <input value={email} onChange={(e) => {setEmail(e.target.value) }} disabled={!editEmail} type="email" />
                                     <i onClick={() => { setEditEmail(true) }} className="edit link icon"></i>
                                 </div>
                             </div>
-                            <button class="ui inverted big blue button"
+                            <button className="ui inverted big blue button"
                                 onClick={() => { setCredentialName('Email'); setEdit(true) }}
                                 disabled={!editEmail}
                             >Confirm</button>
@@ -94,15 +97,15 @@ let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) 
                         </div>
                         <div className="container container-spliter" >
                             <div className="field">
-                                <div id="" class="ui big icon input">
+                                <div id="" className="ui big icon input">
                                     <input onChange={(e) => { setPassword(e.target.value) }}
                                         value={password}
                                         placeholder="Enter New Password"
                                         disabled={!editPassword} type="password" />
-                                    <i onClick={() => { setEditPassword(true) }} class="edit link icon"></i>
+                                    <i onClick={() => { setEditPassword(true) }} className="edit link icon"></i>
                                 </div>
                             </div>
-                            <button class="ui inverted big blue button"
+                            <button className="ui inverted big blue button"
                                 onClick={() => { setCredentialName('Password'); setEdit(true) }}
                                 disabled={!editPassword}
                             >Confirm</button>
@@ -118,6 +121,10 @@ let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) 
             dispatchInfo, secretMatched, setEdit, null,null,null,
             email,password);
     }
+
+    useEffect(()=>{
+        <CredentailsInput />
+    },[edit])
 
     return (
         <>
@@ -142,7 +149,9 @@ let CredentialModal = ({ user, userInfo, setMainEdit, dispatch, dispatchInfo }) 
                     userInfo={userInfo}
                     secretMatched={secretMatched}
                     setSecretMatched={setSecretMatched}
-                    handleSubmit={runHandleSubmit} />
+                    handleSubmit={runHandleSubmit} 
+                    modalId="credential-modal"
+                    />
             </div>
         </>
     )

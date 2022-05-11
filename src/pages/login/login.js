@@ -22,13 +22,16 @@ function Login({ dispatch,dispatchInfo }) {
             const data = await api.getAccount();
             dispatch({ type: FetchState.FETCH_SUCCESS, payload: data });
             dispatchInfo({ type: FetchState.FETCH_INIT });
+            let userInfo;
             try {
-                const userInfo = await api.listDocuments(Server.collectionID);
+                userInfo = await api.listDocuments(Server.collectionID);
                 dispatchInfo({ type: FetchState.FETCH_SUCCESS, payload: userInfo["documents"][0] });
                 // console.log(userInfo["documents"][0])
             } catch (e) {
                 dispatchInfo({ type: FetchState.FETCH_FAILURE })
             }
+
+            
         } catch (e) {
             dispatch({ type: FetchState.FETCH_FAILURE });
             if (e.response.code == 401) {

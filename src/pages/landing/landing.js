@@ -40,31 +40,24 @@ function Landing(props) {
                                     <h3>Get Started <i class="right arrow icon"></i> </h3>
                                     <p>
                                         InfoAbout.me is an web application which provides convenience to users to check
-                                        uploded contents by people on various social media platforms like Twitter, Github, Linkedin and Dev.
+                                        uploded contents by themselves on various social media platforms like Twitter and Dev.
 
                                     </p>
                                     <br />
                                     <p>
                                         The main motive of this application is to let the users to check their own uploaded contents on various social media platforms using this single application,
-                                        that's why the application is named as <b>InfoAbout.me</b> but users can also check other people uploaded contents by their userNames
-                                        of various social media platforms.
+                                        that's why the application is named as <b>InfoAbout.me</b>.
                                         <br /><br />
-                                        <b>Note:</b> Each user generated content that we provide is publicly available on the social Media Platforms.
+                                        <b>Note:</b> Each user generated content that we provide is user's own content available on the social Media Platforms.
                                     </p>
                                     <p>
                                         To <b>get started</b> with InfoAbout.me you just need to create an account by below given signUp button.
                                     </p>
                                 </div>
                                 <div id='combined-images-container' class="six wide right floated column">
-                                    <div id='first-logo'>
-                                        <i class="massive github icon"></i>
-                                        <i class="massive twitter icon"></i>
-                                    </div>
-                                    <h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        +</h1>
                                     <div id='second-logo'>
-                                        <i class="massive linkedin icon"></i>
+                                        <i class="massive twitter icon"></i>
+                                        <i class=" plus icon"></i>
                                         <img id='dev-logo' src={devlogo} />
                                     </div>
                                 </div>
@@ -82,9 +75,10 @@ function Landing(props) {
                                 <div class="three wide column">
                                     <h4 class="ui inverted header">Follow me</h4>
                                     <div class="ui inverted link list">
-                                        <a href="#" class="item"><i class="github icon"></i>Github</a>
-                                        <a href="#" class="item"><i class="twitter icon"></i>Twitter</a>
-                                        <a href="#" class="item"><i class="linkedin icon"></i>Linkedin</a>                                    </div>
+                                        <a href="https://github.com/MdSahil-oss" target='_blank' class="item"><i class="github icon"></i>Github</a>
+                                        <a href="https://twitter.com/Sahiloss" target='_blank' class="item"><i class="twitter icon"></i>Twitter</a>
+                                        <a href="https://linkedin.com/in/md-sahil-8aba80208" target='_blank' class="item"><i class="linkedin icon"></i>Linkedin</a>
+                                    </div>
                                 </div>
                                 <div class="seven wide column">
                                     <h4 class="ui inverted header">All Copyrights reserved</h4>
