@@ -41,9 +41,9 @@ Here are some images and videos for demo of InfoAbout Application.
 
 ##  Videos
 
-![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/39d871bd9cb0512b807cccbd12deb3286e88a468/src/images/Screencast%20from%2012-05-22%2005%2051%2040%20PM%20IST.mp4?raw=true "Title")
+![Alt text](https://drive.google.com/file/d/11W7H2GSUDaawtUE5bqTOLjyTR8Eqmi6H/view?usp=sharing?raw=true "Title")
 
-![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/39d871bd9cb0512b807cccbd12deb3286e88a468/src/images/Screencast%20from%2012-05-22%2005%2013%2042%20PM%20IST.mp4?raw=true "Title")
+![Alt text](https://drive.google.com/file/d/1B03R09e2PvisJluThU2jcx3_xZi0Y_Bz/view?usp=sharing?raw=true "Title")
 
 ##  Images
 
