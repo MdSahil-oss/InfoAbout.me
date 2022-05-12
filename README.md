@@ -36,10 +36,18 @@ To setup Frontend for local development go through the each step that mentioned 
  2) after getting Client Id and Client Secret from Twitter save it to ClientId and ClientSecret of /express-server/config/keys.js 
  
  
- ************************************Enjoy This Application
-Here are some images for demo of InfoAbout Application.
+ ************************************Enjoy This Application****
+Here are some images and videos for demo of InfoAbout Application.
 
-![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/5b959baa38d9b3aa30e421c06d131199a39045ea/src/images/Screenshot%20from%202022-05-12%2004-52-11.png?raw=true "Title") 
+##  Videos
+
+![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/39d871bd9cb0512b807cccbd12deb3286e88a468/src/images/Screencast%20from%2012-05-22%2005%2051%2040%20PM%20IST.mp4?raw=true "Title")
+
+![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/39d871bd9cb0512b807cccbd12deb3286e88a468/src/images/Screencast%20from%2012-05-22%2005%2013%2042%20PM%20IST.mp4?raw=true "Title")
+
+##  Images
+
+![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/5b959baa38d9b3aa30e421c06d131199a39045ea/src/images1/Screenshot%20from%202022-05-12%2004-52-11.png?raw=true "Title") 
 
 ![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/5b959baa38d9b3aa30e421c06d131199a39045ea/src/images/Screenshot%20from%202022-05-12%2004-52-21.png?raw=true "Title")
 
