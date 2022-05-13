@@ -13,16 +13,10 @@ const app = express()
 // ******************** Twitter APIs *************************
 
 
-let loginData = {
-    TwitterLogIn: false,
-    LinkedInLogIn: false,
-    DevLogIn: false,
-    GithubLogIn: false
-}
 
 let userTwitterData;
-let pagination_token;
-let accessToken = undefined;
+let userId;
+let accessTokens = {};
 
 const authClient = new auth.OAuth2User({
     client_id: keys['ClientId'],
@@ -37,7 +31,8 @@ const STATE = "my-state";
 
 app.get('/twitterLoginCheck', (req, res) => {
     res.set('Access-Control-Allow-Origin', '*')
-    if (accessToken) {
+    userId = req.query.userId;
+    if (accessTokens[userId]) {
         res.send({
             "status": 200,
             "statusText": "ok",
@@ -54,7 +49,9 @@ app.get('/twitterLoginCheck', (req, res) => {
 })
 
 app.get('/user', async (req, res) => {
-    if (accessToken) {
+    userId = req.query.userId
+
+    if (accessTokens[userId]) {
         try {
             res.set('Access-Control-Allow-Origin', '*')
             let resp = await client.users.findMyUser()
@@ -75,12 +72,9 @@ app.get("/twitterCallback", async function (req, res) {
     try {
         const { code, state } = req.query;
         if (state !== STATE) return res.status(500).send("State isn't matching");
-        accessToken = await authClient.requestAccessToken(code.toString());
-        if (accessToken) {
-            loginData["TwitterLogIn"] = true;
-            // api.updateDocument(keys["usersLogins"],)
-        }
+        accessTokens[userId] = await authClient.requestAccessToken(code.toString());
         res.redirect(`${keys['FrontEndPoint']}/twitterCallback`);
+        userId = undefined;
     } catch (error) {
         console.log(error);
         res.redirect(`${keys['FrontEndPoint']}/twitterCallbackFail`);
@@ -88,6 +82,8 @@ app.get("/twitterCallback", async function (req, res) {
 });
 
 app.get("/twitterLogin", async function (req, res) {
+    userId = req.query.userId
+    // console.log(userId)
     const authUrl = authClient.generateAuthURL({
         state: STATE,
         code_challenge_method: "plain",
@@ -110,8 +106,10 @@ app.get("/tweets", async function (req, res) {
 
 app.get("/twitterRevoke", async function (req, res) {
     try {
+        userId = req.query.userId
         const response = await authClient.revokeAccessToken();
-        accessToken = undefined
+        accessTokens[userId] = undefined;
+        // console.log(accessTokens[userId])
         res.send(response);
     } catch (error) {
         console.log(error);
