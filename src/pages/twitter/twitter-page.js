@@ -5,7 +5,7 @@ import TwitterLanding from "./twitter-landing";
 import { revokeTwitter } from "./twitter-handler";
 import TwitterImage from '../../images/Twitter.png'
 
-function Twitter() {
+function Twitter({user}) {
     let [pagination_token, setPagination_token] = useState('')
     let [logIn, setLogIn] = useState(false)
     let [tweetsBlocks, setTweetsBlocks] = useState(<div class="ui active inverted dimmer">
@@ -45,7 +45,7 @@ function Twitter() {
 
     const getUser = () => {
 
-        fetch(`${Server['APIsEndpoint']}/user`, {
+        fetch(`${Server['APIsEndpoint']}/user?userId=${user["$id"]}`, {
             method: 'GET',
             mode: 'cors'
         }).then(resp => resp.json()).then((jsonData => {
@@ -65,7 +65,7 @@ function Twitter() {
     }
 
     let checkLogin = () => {
-        fetch(`${Server['APIsEndpoint']}/twitterLoginCheck`, {
+        fetch(`${Server['APIsEndpoint']}/twitterLoginCheck?userId=${user["$id"]}`, {
             method: 'GET',
             mode: 'cors'
         }).then(resp => resp.json()).then((jsonData => {
@@ -84,7 +84,7 @@ function Twitter() {
     }, [logIn])
 
     useEffect(() => {
-        console.log("running useEffect")
+        // console.log("running useEffect")
         checkLogin()
 
         // console.log(userTweets)
@@ -104,7 +104,7 @@ function Twitter() {
 
     let handleTwitterLogout = async (e) => {
         e.target.classList.add('loading')
-        await revokeTwitter();
+        await revokeTwitter(user["$id"]);
         setLogIn(false)
         // console.log('logout')
         setTimeout(() => {
@@ -143,7 +143,7 @@ function Twitter() {
                 </div>
                 <button id="btn-mt-20" onClick={handleNextTweets} className="ui inverted primary button">Next</button>
             </div>
-        </div>) : <TwitterLanding />
+        </div>) : <TwitterLanding user={user}/>
     )
 }
 
