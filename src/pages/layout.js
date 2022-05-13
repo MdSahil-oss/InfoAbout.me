@@ -1,4 +1,3 @@
-
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "../components/navbar/navbar";
 import Account from "./account/account"
@@ -10,7 +9,7 @@ const Layout = ({account,linkedin,github,twitter,dev,user,userInfo,dispatch,disp
   if (twitter) {
     return (
       <>
-        <Twitter />
+        <Twitter user={user}/>
       </>
     )
   }
