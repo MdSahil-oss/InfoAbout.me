@@ -34,10 +34,11 @@ To setup Frontend for local development go through the each step that mentioned 
  
  1) To get ClientId and ClientSecret you will have to create an account with Twitter Developer API :- https://developer.twitter.com/en/portal/petition/essential/basic-info
  2) after getting Client Id and Client Secret from Twitter save it to 'ClientId' and 'ClientSecret' of /express-server/config/keys.js.
- 3) and also save redirect-URL in /express-server/index.js on line number 30 for 'callback' variable. redirect URL is that you saved for Twitter App while creating an App for Twitter project in Twitter Developer API account 
+ 3) and also save redirect-URL in /express-server/index.js on line number 30 for 'callback' variable. redirect URL is that you saved for Twitter App while creating an App for Twitter project in Twitter Developer API account.
+ 4) syntax to save redirect URL for this application in Twitter Developer API account must be :->  locahost:BackEndPort/twitterCallback.
  
  
- *******Enjoy This Application*******
+ 
 Here are some images and videos for demo of InfoAbout Application.
 
 ##  Videos
