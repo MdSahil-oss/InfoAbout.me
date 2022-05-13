@@ -20,23 +20,24 @@ To setup Frontend for local development go through the each step that mentioned 
   ![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/5b959baa38d9b3aa30e421c06d131199a39045ea/src/images/Screenshot%20from%202022-05-13%2000-51-01.png?raw=true "Title") 
   ![Alt text](https://github.com/MdSahil-oss/InfoAbout.me/blob/5b959baa38d9b3aa30e421c06d131199a39045ea/src/images/Screenshot%20from%202022-05-12%2018-16-05.png?raw=true "Title") 
   
- 5) Put collection ID of UsersInfo collection  in collectionID of src/utils/config.js.
- 6) and also put collection ID of Dev-Credential in devCredential of src/utils/config.js.
+ 5) Put collection ID of UsersInfo collection  in 'collectionID' of src/utils/config.js.
+ 6) and also put collection ID of Dev-Credential in 'devCredential' of src/utils/config.js.
  7) and at the last run `npm start` in the root folder.
  
- Here Frontend setup has finished, Now let's go through Backend setup:
+ Here Frontend setup has finished but you might be thinking that there are some extra variables in src/utils/config.js for that I want say don't worry about them I created those variables for just testing purpose , Now let's go through Backend setup:
  
- 1) save ports numbers in FrontEndPort and BackEndPort of /express-server/config/keys.js for frontend port and backend port.
- 2) and also save entire URL of frontend and backend with port numbers in FrontEndPoint and in APIsEndpoint of /express-server/config/keys.js
+ 1) save ports numbers in 'FrontEndPort' and 'BackEndPort' of /express-server/config/keys.js for frontend port and backend port.
+ 2) and also save entire URL of frontend and backend with port numbers in 'FrontEndPoint' and in 'APIsEndpoint' of /express-server/config/keys.js
  3) and at the end run `node ./index.js` in express-server repository.
  
  Now Backend setup has finished, but stop something is remaining to setup that's ClientId and ClientSecret in /express-server/config/keys.js
  
  1) To get ClientId and ClientSecret you will have to create an account with Twitter Developer API :- https://developer.twitter.com/en/portal/petition/essential/basic-info
- 2) after getting Client Id and Client Secret from Twitter save it to ClientId and ClientSecret of /express-server/config/keys.js 
+ 2) after getting Client Id and Client Secret from Twitter save it to 'ClientId' and 'ClientSecret' of /express-server/config/keys.js.
+ 3) and also save redirect-URL in /express-server/index.js on line number 30 for 'callback' variable. redirect URL is that you saved for Twitter App while creating an App for Twitter project in Twitter Developer API account 
  
  
- ************************************Enjoy This Application****
+ *******Enjoy This Application*******
 Here are some images and videos for demo of InfoAbout Application.
 
 ##  Videos
