@@ -1,15 +1,14 @@
 import {Server} from '../../utils/config'
 
-let twitterLogin = async () => {
+let twitterLogin = async (userId) => {
   console.log('started Running login Twitter')
-  window.location.replace(`${Server['APIsEndpoint']}/twitterLogin`);
+  window.location.replace(`${Server['APIsEndpoint']}/twitterLogin?userId=${userId}`);
 };
 
 
-// app.get("/revoke",
-let revokeTwitter = async (req, res) => {
+let revokeTwitter = async (userId) => {
   try {
-    let res = await fetch(`${Server['APIsEndpoint']}/twitterRevoke`, {
+    let res = await fetch(`${Server['APIsEndpoint']}/twitterRevoke?userId=${userId}`, {
       method: 'GET',
       mode: 'cors'
     })
