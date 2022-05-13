@@ -1,7 +1,7 @@
 import { Server } from "../../utils/config"
 import { getUser,twitterLogin } from "./twitter-handler"
 
-export default function TwitterLanding() {
+export default function TwitterLanding({user}) {
 
     
     
@@ -12,7 +12,7 @@ export default function TwitterLanding() {
                     Get Started with Twitter with us
                 </h1>
                 <h2> To get Started with Twitter you need to authorize us.</h2>
-                <a onClick={twitterLogin} class="ui huge primary button">Authorize Us<i class="right arrow icon"></i></a>
+                <a onClick={()=>{twitterLogin(user["$id"])}} class="ui huge primary button">Authorize Us<i class="right arrow icon"></i></a>
             </div>
         </>
     )
